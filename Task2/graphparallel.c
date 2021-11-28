@@ -3,7 +3,6 @@
 */  
 #include <stdlib.h>
 #include <stdio.h>
-  
 #include <string.h>
 #include <sys/time.h>
 #include <omp.h>
@@ -15,8 +14,7 @@ void dijkstra (int graph[N][N], int source);
 /* This program runs single source Dijkstra's algorithm. Given the distance
  matrix that defines a graph, we seek a minimum distance array between
  source vertex and all other vertices. */ 
-  int
-main (int argc, char **argv)
+  int main (int argc, char **argv)
 {
   
 int i, j;
@@ -59,20 +57,17 @@ exit (1);
     
 }
   
-//printf("\nThe adjacency matrix: \n");
+
     for (i = 0; i < N; i++)
     {
       
-for (j = 0; j < N; j++)
+	for (j = 0; j < N; j++)
 	{
 	  
-fscanf (fp, "%d", &graph[i][j]);
-	  
-//if (graph[i][j] == 9999999) printf("%4s", "INT");
-//else printf("%4d", graph[i][j]);
+	fscanf (fp, "%d", &graph[i][j]);
 	}
       
-//printf("\n");
+
     }
   
 dijkstra (graph, SOURCE);
@@ -121,12 +116,10 @@ int nth;			/* number of threads */
   
 /* Initialize all vertices' distance and status. */ 
     for (i = 0; i < N; i++)
-    {
+{
       
-visited[i] = 0;
-      
-
- distance[i] = graph[source][i];
+	visited[i] = 0;
+	distance[i] = graph[source][i];
     
 }
   
@@ -145,7 +138,7 @@ my_first = (my_id * N) / nth;
     
 my_last = ((my_id + 1) * N) / nth - 1;
     
-//fprintf(stdout, "P%d: First=%d Last=%d\n", my_id, my_first, my_last);
+
       for (my_step = 1; my_step < N; my_step++)
       {
 	
@@ -161,23 +154,19 @@ mv = -1;
 int k;
 	
 my_md = MAXINT;
-	
 my_mv = -1;
 	
 
 	  /* Each thread finds the minimum distance unconnected vertex inner of
 	     the graph */ 
-	  for (k = my_first; k <= my_last; k++)
+	for (k = my_first; k <= my_last; k++)
 	  {
 	    
-if (!visited[k] && distance[k] < my_md)
+	if (!visited[k] && distance[k] < my_md)
 	      {
-		
-my_md = distance[k];
-		
-my_mv = k;
-	      
-}
+		   my_md = distance[k];
+		   my_mv = k;
+	      }
 	  
 }
 	
@@ -224,9 +213,7 @@ int j;
 for (j = my_first; j <= my_last; j++)
 	      {
 		
-if (!visited[j] && graph[mv][j] < MAXINT
-		     && 
-distance[mv] + graph[mv][j] < distance[j])
+if (!visited[j] && graph[mv][j] < MAXINT && distance[mv] + graph[mv][j] < distance[j])
 		  {
 		    
 distance[j] = distance[mv] + graph[mv][j];
