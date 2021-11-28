@@ -1,10 +1,7 @@
 //This program demonstrates the use of OpenMP Parallel For Directive And Critical Section.
-
 #include<stdio.h>
 #include<omp.h>
-
 /* Main Program */
-
 main()
 {
 	float *Array, *Check, serial_sum, sum, partialsum;
