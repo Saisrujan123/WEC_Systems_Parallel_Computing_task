@@ -1,21 +1,4 @@
-/***********************************************************************
-
-   Example  4          :     Omp_Sumof_Elements.c
-
-   Objective           : Write an OpenMP program to find Sum Of Elements
-                         of One-Dimensional real array.
-                         This example demonstrates the use of OpenMP
-                         Parallel For Directive And Critical Section.
-
-   Input               : Size of an array
-
-   Output              : The Array Elements and Sum of array elements
-
-   Necessary Condition : Number of threads should be less than or
-                         equal to number of processors of a SMP node
-
-**********************************************************************/
-
+//This program demonstrates the use of OpenMP Parallel For Directive And Critical Section.
 
 #include<stdio.h>
 #include<omp.h>
@@ -24,8 +7,8 @@
 
 main()
 {
-	float          *Array, *Check, serial_sum, sum, partialsum;
-	int             array_size, i;
+	float *Array, *Check, serial_sum, sum, partialsum;
+	int array_size, i;
 
 	printf("Enter the size of the array\n");
 	scanf("%d", &array_size);
@@ -45,12 +28,8 @@ main()
 		scanf("%f",&Array[i]);
 		Check[i] = Array[i];
 	}
-
-	
-
-	sum = 0.0;
+ 	sum = 0.0;
 	partialsum = 0.0;
-
 	/* OpenMP Parallel For Directive And Critical Section */
 
 #pragma omp parallel for shared(sum)
@@ -61,12 +40,9 @@ main()
 	}
 
 	serial_sum = 0.0;
-
-	/* Serail Calculation */
+	/* Serial Calculation */
 	for (i = 0; i < array_size; i++)
 		serial_sum = serial_sum + Check[i];
-
-
 	if (serial_sum == sum)
 		printf("\nThe Serial And Parallel Sums Are Equal\n");
 	else {
