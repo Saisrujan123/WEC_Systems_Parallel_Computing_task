@@ -6,7 +6,7 @@
 `$ git clone https://github.com/Saisrujan123/WEC_Systems_Parallel_Computing_task`
 
 * Change your current working directory to either task1 or task2.\
-`$ cd task1`  or   `$ cd task2`
+`$ cd Task1`  or   `$ cd Task2`
 
 * Now compile the code using the following command replacing filename with your file name.\
 `$ gcc -o filename -fopenmp filename.c`
