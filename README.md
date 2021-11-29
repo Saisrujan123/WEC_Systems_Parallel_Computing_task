@@ -9,7 +9,7 @@
 `$ cd task1`  or   `$ cd task2`
 
 * Now compile the code using the following command replacing filename with your file name.\
-`gcc -o filename -fopenmp filename.c`
+`$ gcc -o filename -fopenmp filename.c`
 
 * Finally run it using the following command replacing filename with your file name.\
-`./filanme`
+`$ ./filanme`
